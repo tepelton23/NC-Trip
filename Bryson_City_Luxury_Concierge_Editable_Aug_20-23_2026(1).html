@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bryson City Two-Couple Concierge Guide</title>
+<style>
+:root{--ink:#17324d;--blue:#2e6178;--sage:#69877d;--gold:#b4975e;--cream:#f7f2e9;--mist:#edf2f3;--line:#d8e0e2;--text:#30373b}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:#edf1f1;color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.38}
+.shell{max-width:920px;margin:auto;background:white;min-height:100vh} .hero{padding:36px 30px 27px;background:linear-gradient(145deg,var(--ink),var(--blue));color:#fff}
+.eyebrow{font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#dfca9c} h1{margin:8px 0;font-size:33px;line-height:1.05} .hero p{margin:0;color:#eaf3f5}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px} .summary div{padding:9px;border:1px solid rgba(255,255,255,.2);border-radius:9px;background:rgba(255,255,255,.06)} .summary b{display:block;font-size:11px} .summary span{font-size:10px;color:#dce8eb}
+nav{position:sticky;top:0;z-index:10;display:flex;gap:6px;padding:9px 14px;background:white;border-bottom:1px solid var(--line);overflow:auto} nav a{white-space:nowrap;text-decoration:none;color:var(--ink);background:var(--mist);padding:7px 11px;border-radius:999px;font-size:11px;font-weight:700}
+main{padding:19px 14px 36px} .day{margin-bottom:24px} .dayhead{display:flex;justify-content:space-between;gap:12px;align-items:end;padding:15px 17px;background:var(--cream);border:1px solid var(--line);border-radius:13px 13px 0 0}
+.dayhead h2{margin:3px 0 0;font-size:22px;color:var(--ink)} .theme{font-size:11px;font-weight:700;color:var(--blue);text-align:right}
+.timeline{border-left:1px solid var(--line);border-right:1px solid var(--line)} .card{display:grid;grid-template-columns:108px 1fr;gap:13px;padding:14px 17px;border-bottom:1px solid var(--line);page-break-inside:avoid}
+.time{font-size:14px;font-weight:700;color:var(--ink)} .label{display:block;margin-top:3px;font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--sage)} .content h3{margin:0 0 4px;font-size:15px;color:var(--ink)} .content p{margin:0 0 7px;font-size:12px}
+.meta,.actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px} .chip{padding:4px 7px;border-radius:999px;background:var(--mist);color:var(--blue);font-size:9px;font-weight:700} .btn{display:inline-block;padding:6px 9px;border-radius:7px;background:var(--ink);color:white;text-decoration:none;font-size:10px;font-weight:700} .btn.alt{background:white;color:var(--ink);border:1px solid var(--line)}
+.callout{margin-top:9px;padding:9px 11px;border-left:4px solid var(--gold);background:#faf7f0;font-size:11px} .pivot{background:#fbfcfc} .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:8px} .mini{padding:9px;border:1px solid var(--line);border-radius:8px;background:white} .mini strong{display:block;color:var(--ink);font-size:11px} .mini small{display:block;margin-top:3px;font-size:9.5px;color:#59666b}
+.footer{padding:15px 22px;background:var(--ink);color:white;font-size:9px} .footer a{color:#efd8a5}
+
+.edit-controls{
+  position:fixed;
+  top:14px;
+  right:14px;
+  z-index:50;
+  display:flex;
+  gap:7px;
+  align-items:center;
+}
+.edit-btn{
+  border:1px solid rgba(255,255,255,.45);
+  border-radius:999px;
+  padding:8px 13px;
+  background:rgba(23,50,77,.94);
+  color:white;
+  font:700 11px Arial,Helvetica,sans-serif;
+  cursor:pointer;
+  box-shadow:0 2px 8px rgba(0,0,0,.18);
+}
+.edit-btn.secondary{
+  display:none;
+  background:white;
+  color:var(--ink);
+  border-color:var(--line);
+}
+body.editing .edit-btn.secondary{display:inline-block}
+body.editing [data-editable="true"]{
+  outline:2px dashed var(--gold);
+  outline-offset:3px;
+  border-radius:3px;
+  cursor:text;
+}
+.edit-status{
+  display:none;
+  padding:6px 9px;
+  border-radius:999px;
+  background:white;
+  color:var(--ink);
+  border:1px solid var(--line);
+  font-size:10px;
+  font-weight:700;
+}
+body.editing .edit-status{display:inline-block}
+@media print{
+  .edit-controls{display:none!important}
+}
+
+@media(max-width:700px){.summary{grid-template-columns:repeat(2,1fr)}.card{grid-template-columns:1fr;gap:3px}.grid3{grid-template-columns:1fr}.dayhead{align-items:flex-start;flex-direction:column}.theme{text-align:left}h1{font-size:28px}}
+@media print{@page{size:letter;margin:.38in}body{background:white}.shell{max-width:none}nav{display:none}.hero{padding:18px 22px;-webkit-print-color-adjust:exact;print-color-adjust:exact}h1{font-size:23px}.hero p{font-size:8.5pt}.summary{margin-top:10px}.summary div{padding:6px}main{padding:9px 0}.day{margin-bottom:11px}.dayhead{padding:8px 10px}.dayhead h2{font-size:15px}.card{grid-template-columns:72px 1fr;gap:7px;padding:7px 9px}.time{font-size:8.4pt}.content h3{font-size:9.2pt}.content p{font-size:7.7pt;margin-bottom:3px}.btn{font-size:6.5pt;padding:3px 5px}.chip{font-size:6.2pt}.callout{font-size:7pt;padding:5px 7px}.mini{padding:5px}.mini strong{font-size:7.5pt}.mini small{font-size:6.6pt}.footer{padding:7px 0;background:white;color:#5b666b;border-top:1px solid var(--line)}}
+
+.utility-bar{position:fixed;top:14px;right:14px;z-index:70;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;max-width:520px}
+.utility-bar button{border:1px solid rgba(255,255,255,.38);border-radius:999px;padding:8px 12px;background:rgba(23,50,77,.96);color:#fff;font:700 10px Arial;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.16)}
+.utility-bar button.light{background:#fff;color:var(--ink);border-color:var(--line)}
+.edit-controls{display:none!important}
+.side-panel{position:fixed;top:0;right:-390px;width:370px;max-width:92vw;height:100%;background:#fff;z-index:80;box-shadow:-8px 0 28px rgba(0,0,0,.18);transition:right .25s ease;padding:22px;overflow:auto}
+.side-panel.open{right:0}.side-panel h2{margin:0 0 6px;color:var(--ink)}.side-panel h3{margin:20px 0 7px;color:var(--ink);font-size:14px}.side-panel p{font-size:11px}.panel-close{float:right;border:0;background:var(--mist);border-radius:999px;padding:7px 10px;cursor:pointer}
+.panel-nav{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:12px}.panel-nav a{padding:9px;text-decoration:none;background:var(--mist);color:var(--ink);border-radius:8px;font-size:11px;font-weight:700;text-align:center}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:11px}
+.notes-area{width:100%;min-height:120px;border:1px solid var(--line);border-radius:9px;padding:10px;font:12px Arial}
+.quick-section{margin:0 0 22px;padding:18px;border:1px solid var(--line);border-radius:13px;background:#fff;page-break-inside:avoid}
+.quick-section h2{margin:0 0 10px;color:var(--ink);font-size:20px}.responsibility-grid,.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.resp,.check-card{border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--mist)}.resp h3,.check-card h3{margin:0 0 5px;color:var(--ink);font-size:14px}.resp p{font-size:11px;margin:0}
+.check-card label{display:block;padding:4px 0;font-size:11px}.check-card input{margin-right:7px}
+.dog-badge,.cost-badge,.duration-badge{display:inline-block;margin-right:5px;padding:4px 7px;border-radius:999px;background:#f6f1e6;color:var(--ink);font-size:9px;font-weight:700}
+body.hide-optional .pivot{display:none}
+body.weather-only .card:not(.pivot){opacity:.26}
+body.editing [data-editable="true"]{outline:2px dashed var(--gold);outline-offset:3px;cursor:text}
+.print-note{font-size:9px;color:#617077;margin-top:8px}
+@media(max-width:700px){.utility-bar{top:8px;right:8px;max-width:92vw}.utility-bar button{padding:7px 9px}.responsibility-grid,.check-grid{grid-template-columns:1fr}.hero{padding-top:72px}}
+@media print{.utility-bar,.side-panel{display:none!important}.quick-section{padding:10px;margin-bottom:10px}.responsibility-grid,.check-grid{grid-template-columns:1fr 1fr}.notes-screen-only{display:none!important}.dog-badge,.cost-badge,.duration-badge{font-size:6pt;padding:2px 4px}}
+
+</style>
+</head>
+<body>
+
+<div class="utility-bar" aria-label="Guide controls">
+  <button id="editToggle" type="button">Edit</button>
+  <button id="optionalToggle" type="button">Hide Options</button>
+  <button id="weatherToggle" type="button">Weather View</button>
+  <button id="panelOpen" type="button">Guide Tools</button>
+  <button id="saveCopy" class="light" type="button">Save Copy</button>
+</div>
+<aside class="side-panel" id="sidePanel">
+  <button class="panel-close" id="panelClose" type="button">Close</button>
+  <h2>Weekend Tools</h2>
+  <p>Jump to a day, simplify the itinerary, check packing items, or save private notes on this device.</p>
+  <div class="panel-nav">
+    <a href="#overview">Overview</a><a href="#thu">Thursday</a>
+    <a href="#fri">Friday</a><a href="#sat">Saturday</a>
+    <a href="#sun">Sunday</a><a href="#packing">Packing</a>
+  </div>
+  <h3>Display</h3>
+  <div class="toggle-row"><span>Show optional events</span><input id="panelOptional" type="checkbox" checked></div>
+  <div class="toggle-row"><span>Highlight weather pivots</span><input id="panelWeather" type="checkbox"></div>
+  <h3>Trip Notes</h3>
+  <textarea id="tripNotes" class="notes-area" placeholder="Add confirmation numbers, grocery requests, reminders or changes..."></textarea>
+  <p class="print-note">Notes and checklist status save automatically in this browser.</p>
+</aside>
+<div class="shell">
+<header class="hero"><div class="eyebrow">Private weekend concierge guide</div><h1 data-editable="true">Bryson City Mountain Escape</h1><p data-editable="true">August 20-23, 2026 · Wade, Stephanie & Remi arriving from Charlotte · Jared, Kelly & Cha Cha arriving from Memphis · Sequential plans and same-day pivots.</p>
+<div class="summary"><div><b>Jared, Kelly & Cha Cha</b><span data-editable="true">From Memphis · ~7½ hours nonstop</span></div><div><b>Wade, Stephanie & Remi</b><span data-editable="true">From Charlotte · arrive first + handle dinner</span></div><div><b>Friday</b><span data-editable="true">2 PM guided duckies</span></div><div><b>Saturday</b><span data-editable="true">Falls + 4 PM rail bikes</span></div></div></header>
+<nav><a href="#thu">Thursday</a><a href="#fri">Friday</a><a href="#sat">Saturday</a><a href="#sun">Sunday</a></nav>
+<main>
+
+<section class="quick-section" id="overview">
+  <div class="eyebrow">At-a-glance responsibilities</div>
+  <h2 data-editable="true">A relaxed arrival for both couples</h2>
+  <div class="responsibility-grid">
+    <div class="resp"><h3 data-editable="true">Wade, Stephanie & Remi</h3><p data-editable="true">Travel from Charlotte, stop at Kandi's in Waynesville, pick up groceries or takeout, reach the cabin first, settle Remi, chill drinks and have dinner ready.</p></div>
+    <div class="resp"><h3 data-editable="true">Jared, Kelly & Cha Cha</h3><p data-editable="true">Make the approximately 7½-hour nonstop drive from Memphis at a comfortable pace. There is no dinner deadline and no expectation to go back out after arrival.</p></div>
+  </div>
+  <div class="callout"><b>Thursday's rule:</b> Jared and Kelly should arrive to a calm cabin, dinner and dessert - not another decision or drive.</div>
+</section>
+
+
+<section class="day" id="thu"><div class="dayhead"><div><div class="eyebrow">Thursday · August 20</div><h2 data-editable="true">Two arrivals, one easy welcome</h2></div><div class="theme">Dinner waiting at the cabin for Jared & Kelly</div></div><div class="timeline">
+<article class="card"><div class="time">Wade & Stephanie<span class="label" data-editable="true">Drive to cabin</span></div><div class="content"><h3 data-editable="true">Travel from Charlotte</h3><p data-editable="true">Arrive first, access the house and become the setup team for the evening.</p><div class="actions"><a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=Charlotte%2C+NC&destination=3000+Brush+Creek+Rd%2C+Bryson+City%2C+NC+28713&travelmode=driving" target="_blank">Charlotte → VRBO route</a><a class="btn alt" href="https://www.google.com/maps/search/?api=1&query=3000+Brush+Creek+Rd%2C+Bryson+City%2C+NC+28713" target="_blank">VRBO map</a></div></div></article>
+<article class="card"><div class="time">Stephanie's stop<span class="label" data-editable="true">Waynesville · Thursday</span></div><div class="content">
+<h3 data-editable="true">Kandi's Cakes & Bake Shop</h3>
+<p data-editable="true">Stop at 200 S. Main Street in downtown Waynesville before continuing to Bryson City. Kandi's is open Thursday from 7:00 AM to 5:00 PM. Pick up Friday breakfast pastries, locally loved cream horns, cookies and a dessert for Thursday dinner.</p>
+<div class="meta"><span class="dog-badge">Remi: downtown stretch stop</span><span class="cost-badge">Quick bakery purchase</span><span class="duration-badge">Allow 20-30 min</span></div>
+<div class="actions"><a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=Charlotte%2C+NC&destination=Kandi%27s+Cakes+%26+Bake+Shop%2C+200+S+Main+St%2C+Waynesville%2C+NC+28786&travelmode=driving" target="_blank">Charlotte → Kandi's</a><a class="btn alt" href="https://www.kandiscakesandbakeshop.com/" target="_blank">Official website</a><a class="btn alt" href="https://www.google.com/maps/search/?api=1&query=Kandi%27s+Cakes+%26+Bake+Shop%2C+200+S+Main+St%2C+Waynesville%2C+NC+28786" target="_blank">Bakery map</a><a class="btn alt" href="https://www.google.com/maps/dir/?api=1&origin=Kandi%27s+Cakes+%26+Bake+Shop%2C+200+S+Main+St%2C+Waynesville%2C+NC+28786&destination=3000+Brush+Creek+Rd%2C+Bryson+City%2C+NC+28713&travelmode=driving" target="_blank">Kandi's → VRBO</a></div>
+<div class="callout"><b>Stephanie's shopping list:</b> cream horns, pastries for Friday morning, cookies for the cabin and one dessert everyone can share Thursday night.</div>
+</div></article>
+
+<article class="card"><div class="time">Before check-in<span class="label" data-editable="true">Groceries + dinner</span></div><div class="content"><h3 data-editable="true">Wade & Stephanie handle provisions</h3><p data-editable="true">Stop at Ingles for all weekend basics. Either pick up dinner for four or buy a simple meal to cook at the cabin.</p><div class="meta"><span class="chip" data-editable="true">Dinner ready before Memphis arrives</span><span class="chip" data-editable="true">No delivery assumption</span></div><div class="actions"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Ingles+Market%2C+Bryson+City%2C+NC" target="_blank">Ingles map</a><a class="btn alt" href="https://www.explorebrysoncity.com/restaurants-and-breweries/carryout/" target="_blank">Local carryout options</a><a class="btn alt" href="https://www.google.com/maps/dir/?api=1&origin=Ingles+Market%2C+Bryson+City%2C+NC&destination=3000+Brush+Creek+Rd%2C+Bryson+City%2C+NC+28713&travelmode=driving" target="_blank">Ingles → VRBO</a></div><div class="callout"><b>Recommended Thursday dinner:</b> rotisserie chicken or grilled protein, prepared salad, vegetables, bread and wine—or local takeout collected by Wade & Stephanie.</div></div></article>
+<article class="card"><div class="time">Jared & Kelly<span class="label" data-editable="true">~7½ hours nonstop</span></div><div class="content"><h3 data-editable="true">Travel from Memphis without a dinner deadline</h3><p data-editable="true">Plan the day around the long drive. Dinner will be waiting at the cabin; no need to change clothes, drive into town or arrive by a specific hour.</p><div class="actions"><a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=Memphis%2C+TN&destination=3000+Brush+Creek+Rd%2C+Bryson+City%2C+NC+28713&travelmode=driving" target="_blank">Memphis → VRBO route</a></div></div></article>
+<article class="card"><div class="time">Upon arrival<span class="label" data-editable="true">Welcome evening</span></div><div class="content"><h3 data-editable="true">Eat at the house and decompress</h3><p data-editable="true">Walk Remi and Cha Cha, unload and enjoy dinner whenever Jared & Kelly arrive. Keep the first night intentionally unscheduled.</p></div></article>
+<article class="card pivot"><div class="time">Optional only<span class="label" data-editable="true">If Memphis arrives early</span></div><div class="content"><h3 data-editable="true">Thursday live-music option</h3><p data-editable="true">NOC hosts Music Bingo at Big Wesser on Thursdays at 6 PM during the summer. This is only a spontaneous option if timing and energy genuinely support it.</p><div class="actions"><a class="btn alt" href="https://noc.com/events/" target="_blank">NOC events calendar</a><a class="btn alt" href="https://www.google.com/maps/search/?api=1&query=Nantahala+Outdoor+Center%2C+Bryson+City%2C+NC" target="_blank">NOC map</a></div><div class="callout"><b>Curator's call:</b> A 90% likelihood of staying in is the correct assumption. Do not build Thursday around this event.</div></div></article>
+</div></section>
+
+<section class="day" id="fri"><div class="dayhead"><div><div class="eyebrow">Friday · August 21</div><h2 data-editable="true">Nantahala adventure day</h2></div><div class="theme">Optional market or breakfast before rafting</div></div><div class="timeline">
+<article class="card"><div class="time">Morning<span class="label" data-editable="true">Default plan</span></div><div class="content"><h3 data-editable="true">Coffee and light food at the cabin</h3><p data-editable="true">Keep the first full morning slow. Exercise Remi and Cha Cha before leaving them later.</p><div class="grid3">
+<div class="mini"><strong data-editable="true">Breakfast-out option</strong><small data-editable="true">Bryson Bakery for breakfast sandwiches and baked goods.</small><div class="actions"><a class="btn alt" href="https://www.explorebrysoncity.com/listing/bryson-bakery/1141/" target="_blank">Details</a></div></div>
+<div class="mini"><strong data-editable="true">Browse all breakfast</strong><small data-editable="true">Use the current local breakfast and brunch directory.</small><div class="actions"><a class="btn alt" href="https://www.explorebrysoncity.com/restaurants-and-breweries/breakfast-and-brunch/" target="_blank">Breakfast guide</a></div></div>
+<div class="mini"><strong data-editable="true">Coffee/pastry option</strong><small data-editable="true">Local cafés and bakeries if the group wants a short town outing.</small><div class="actions"><a class="btn alt" href="https://www.explorebrysoncity.com/restaurants-and-breweries/coffee-shops-bakeries/" target="_blank">Coffee guide</a></div></div>
+</div></div></article>
+<article class="card pivot"><div class="time">9:00-10:30 AM<span class="label" data-editable="true">Optional local event</span></div><div class="content"><h3 data-editable="true">Smoky Mountain Farmers & Artisans Market</h3><p data-editable="true">Friday, 9 AM-2 PM at Aquarium Park. Pet-friendly, rain or shine, with local produce and artisan goods. Leave by about 10:30 to preserve lunch and rafting timing.</p><div class="actions"><a class="btn" href="https://www.explorebrysoncity.com/listing/smoky-mountain-farmers-and-artisans-market/892/" target="_blank">Market details</a><a class="btn alt" href="https://www.google.com/maps/search/?api=1&query=Aquarium+Park%2C+Bryson+City%2C+NC" target="_blank">Market map</a></div></div></article>
+<article class="card"><div class="time">11:15-11:45 AM<span class="label" data-editable="true">Lunch decision</span></div><div class="content"><h3 data-editable="true">Pack lunch—or pick it up</h3><p data-editable="true">Default: sandwiches from the cabin. Upgrade: made-to-order sandwiches, salads or soup from High Test Deli before heading to NOC.</p><div class="actions"><a class="btn alt" href="https://www.explorebrysoncity.com/listing/high-test-deli-and-sweet-shop/225/" target="_blank">High Test Deli details</a><a class="btn alt" href="https://www.explorebrysoncity.com/restaurants-and-breweries/casual-dining-burgers-pizza/" target="_blank">Other lunch options</a></div></div></article>
+<article class="card"><div class="time">12:15-12:30 PM<span class="label" data-editable="true">Drive · ~25-35 min</span></div><div class="content"><h3 data-editable="true">Settle dogs and drive to NOC</h3><p data-editable="true">Leave water and a settling treat. Take the picnic and dry clothes.</p><div class="actions"><a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=3000+Brush+Creek+Rd%2C+Bryson+City%2C+NC+28713&destination=Nantahala+Outdoor+Center%2C+Bryson+City%2C+NC&travelmode=driving" target="_blank">Directions to NOC</a><a class="btn alt" href="https://www.google.com/maps/search/?api=1&query=Nantahala+Outdoor+Center%2C+Bryson+City%2C+NC" target="_blank">NOC map</a></div></div></article>
+<article class="card"><div class="time">~1:00 PM<span class="label" data-editable="true">Lunch</span></div><div class="content"><h3 data-editable="true">Riverside picnic</h3><p data-editable="true">Eat, use the restrooms and complete check-in without rushing.</p></div></article>
+<article class="card"><div class="time">2:00-5:00 PM<span class="label" data-editable="true">Anchor activity</span></div><div class="content"><h3 data-editable="true">Guided duckies</h3><p data-editable="true">About two hours on the water and roughly three hours total.</p><div class="meta"><span class="chip" data-editable="true">Water shoes</span><span class="chip" data-editable="true">Synthetic clothing</span><span class="chip" data-editable="true">Towels</span><span class="chip" data-editable="true">Dry clothes</span></div><div class="actions"><a class="btn" href="https://noc.com/trips/nantahala-river-rafting-guided-duck-trip/" target="_blank">Activity details</a></div></div></article>
+<article class="card"><div class="time">~5:00 PM<span class="label" data-editable="true">Drive · ~25-35 min</span></div><div class="content"><h3 data-editable="true">Return to Remi and Cha Cha</h3><p data-editable="true">Do not stay through dinner unless separate dog care is arranged.</p><div class="actions"><a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=Nantahala+Outdoor+Center%2C+Bryson+City%2C+NC&destination=3000+Brush+Creek+Rd%2C+Bryson+City%2C+NC+28713&travelmode=driving" target="_blank">Directions home</a></div></div></article>
+<article class="card"><div class="time">7:00-7:30 PM<span class="label" data-editable="true">Dinner</span></div><div class="content"><h3 data-editable="true">Choose based on energy</h3><div class="grid3">
+<div class="mini"><strong data-editable="true">Mountain Layers + Rice Wagon</strong><small data-editable="true">Most distinctive casual option; dog-friendly patio listed.</small><div class="actions"><a class="btn alt" href="https://www.mountainlayersbrewingcompany.com/" target="_blank">Website</a><a class="btn alt" href="https://www.google.com/maps/search/?api=1&query=The+Rice+Wagon%2C+Bryson+City%2C+NC" target="_blank">Map</a></div></div>
+<div class="mini"><strong data-editable="true">Bryson City Brewing</strong><small data-editable="true">Easy dog-friendly outdoor setting and broad menu.</small><div class="actions"><a class="btn alt" href="https://www.brysoncitybrewing.com/" target="_blank">Website</a></div></div>
+<div class="mini"><strong data-editable="true">Dinner at the cabin</strong><small data-editable="true">Best if rafting leaves everyone tired.</small></div>
+</div></div></article>
+<article class="card pivot"><div class="time">3:00-9:00 PM<span class="label" data-editable="true">Full-day pivot · Fair</span></div><div class="content"><h3 data-editable="true">Swain County Agricultural Fair - Friday</h3><p data-editable="true">Livestock shows, food trucks, craft vendors and Battle of the Bands at 6 PM. Admission is $10 per vehicle. This conflicts with rafting and should replace it, not be stacked onto it.</p><div class="actions"><a class="btn alt" href="https://www.swainfair.org/" target="_blank">Fair details</a><a class="btn alt" href="https://www.google.com/maps/search/?api=1&query=Great+Smoky+Mountains+Event+Park%2C+1130+Hyatt+Creek+Road%2C+Bryson+City%2C+NC" target="_blank">Fair map</a></div></div></article>
+<article class="card pivot"><div class="time">Weather pivot<span class="label" data-editable="true">Indoor + scenic</span></div><div class="content"><h3 data-editable="true">If rafting is canceled</h3><p data-editable="true">Choose the Heritage Museum plus downtown lunch, or Road to Nowhere if rain is light and visibility is good. NOC's summer music series may also provide live music later; check the specific weekend lineup.</p><div class="actions"><a class="btn alt" href="https://www.explorebrysoncity.com/listing/swain-county-visitor-center-and-heritage-museum/785/" target="_blank">Museum details</a><a class="btn alt" href="https://www.greatsmokies.com/road-nowhere/" target="_blank">Road to Nowhere</a><a class="btn alt" href="https://noc.com/events/2026-summer-music-series/" target="_blank">NOC music schedule</a></div></div></article>
+</div></section>
+
+<section class="day" id="sat"><div class="dayhead"><div><div class="eyebrow">Saturday · August 22</div><h2 data-editable="true">Findley Falls + rail bikes</h2></div><div class="theme">Dog adventure first · Event choices are swaps</div></div><div class="timeline">
+<article class="card"><div class="time">Morning<span class="label" data-editable="true">Breakfast choice</span></div><div class="content"><h3 data-editable="true">Cabin coffee—or breakfast out</h3><p data-editable="true">Default: light food at the house. For a sit-down or bakery start, use the local breakfast directory, but keep departure near 10 AM.</p><div class="actions"><a class="btn alt" href="https://www.explorebrysoncity.com/restaurants-and-breweries/breakfast-and-brunch/" target="_blank">Breakfast options</a><a class="btn alt" href="https://www.explorebrysoncity.com/listing/bryson-bakery/1141/" target="_blank">Bryson Bakery</a></div></div></article>
+<article class="card"><div class="time">~10:00 AM<span class="label" data-editable="true">Drive · ~25-40 min</span></div><div class="content"><h3 data-editable="true">Drive to Findley Falls with Remi and Cha Cha</h3><p data-editable="true">Bring water, towels, creek shoes and dry socks.</p><div class="actions"><a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=3000+Brush+Creek+Rd%2C+Bryson+City%2C+NC+28713&destination=Findley+Falls%2C+Nantahala+Gorge%2C+NC&travelmode=driving" target="_blank">Directions</a><a class="btn alt" href="https://www.explorebrysoncity.com/listing/findley-falls-in-the-nantahala-gorge/968/" target="_blank">Trail details</a><a class="btn alt" href="https://www.google.com/maps/search/?api=1&query=Findley+Falls%2C+Nantahala+Gorge%2C+NC" target="_blank">Map</a></div></div></article>
+<article class="card"><div class="time">10:30 AM-12:15 PM<span class="label" data-editable="true">Dog activity</span></div><div class="content"><h3 data-editable="true">Findley Falls</h3><p data-editable="true">Hike, creek play, photos and downtime by the water.</p></div></article>
+<article class="card"><div class="time">~12:15 PM<span class="label" data-editable="true">Drive · ~25-40 min</span></div><div class="content"><h3 data-editable="true">Return to the cabin</h3><p data-editable="true">Dry and settle Remi and Cha Cha before the longer Andrews outing.</p><div class="actions"><a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=Findley+Falls%2C+Nantahala+Gorge%2C+NC&destination=3000+Brush+Creek+Rd%2C+Bryson+City%2C+NC+28713&travelmode=driving" target="_blank">Directions home</a></div></div></article>
+<article class="card"><div class="time">12:45-2:15 PM<span class="label" data-editable="true">Lunch</span></div><div class="content"><h3 data-editable="true">Eat at the cabin—or pick up lunch</h3><p data-editable="true">Default: sandwiches or wraps at home. If the group wants lunch out, use High Test Deli or the current casual-dining directory, but protect the 2:30 departure.</p><div class="actions"><a class="btn alt" href="https://www.explorebrysoncity.com/listing/high-test-deli-and-sweet-shop/225/" target="_blank">High Test Deli</a><a class="btn alt" href="https://www.explorebrysoncity.com/restaurants-and-breweries/casual-dining-burgers-pizza/" target="_blank">Lunch directory</a></div></div></article>
+<article class="card"><div class="time">~2:30 PM<span class="label" data-editable="true">Drive · ~45-60 min</span></div><div class="content"><h3 data-editable="true">Drive to Andrews Valley Rail Tours</h3><p data-editable="true">Target 3:30 PM check-in for the 4 PM departure.</p><div class="actions"><a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=3000+Brush+Creek+Rd%2C+Bryson+City%2C+NC+28713&destination=Andrews+Valley+Rail+Tours%2C+Andrews%2C+NC&travelmode=driving" target="_blank">Directions</a><a class="btn alt" href="https://www.andrewsvalleyrailtours.com/" target="_blank">Official website</a><a class="btn alt" href="https://www.google.com/maps/search/?api=1&query=Andrews+Valley+Rail+Tours%2C+Andrews%2C+NC" target="_blank">Map</a></div></div></article>
+<article class="card"><div class="time">4:00-5:30 PM<span class="label" data-editable="true">Anchor activity</span></div><div class="content"><h3 data-editable="true">Rail-bike tour</h3><p data-editable="true">Approximately 90 minutes and nine miles.</p></div></article>
+<article class="card"><div class="time">~5:30 PM<span class="label" data-editable="true">Dinner decision</span></div><div class="content"><h3 data-editable="true">Return home or eat in Andrews</h3><div class="grid3"><div class="mini"><strong data-editable="true">Return to VRBO</strong><small data-editable="true">Best dog logistics and relaxed final night.</small><div class="actions"><a class="btn alt" href="https://www.google.com/maps/dir/?api=1&origin=Andrews+Valley+Rail+Tours%2C+Andrews%2C+NC&destination=3000+Brush+Creek+Rd%2C+Bryson+City%2C+NC+28713&travelmode=driving" target="_blank">Route home</a></div></div><div class="mini"><strong data-editable="true">Hoppy Trout</strong><small data-editable="true">Closest post-ride foodie option. Outdoor dog seating listed, but extends time away.</small><div class="actions"><a class="btn alt" href="https://www.google.com/maps/dir/?api=1&origin=Andrews+Valley+Rail+Tours%2C+Andrews%2C+NC&destination=Hoppy+Trout+Brewing+Company%2C+Andrews%2C+NC&travelmode=driving" target="_blank">Directions</a><a class="btn alt" href="https://hoppytroutbrewingcompany.com/" target="_blank">Website</a></div></div><div class="mini"><strong data-editable="true">Grill at cabin</strong><small data-editable="true">Best value and least friction.</small></div></div></div></article>
+<article class="card pivot"><div class="time">11:00 AM-6:00 PM<span class="label" data-editable="true">Full-day pivot · Fair</span></div><div class="content"><h3 data-editable="true">Swain County Agricultural Fair - Saturday</h3><p data-editable="true">Music headliner, Appalachian clogging, craft and food vendors, and "Everything Fair." No pets are allowed Saturday. This replaces Findley Falls and likely the rail bikes.</p><div class="actions"><a class="btn alt" href="https://www.swainfair.org/" target="_blank">Fair details</a><a class="btn alt" href="https://www.google.com/maps/search/?api=1&query=Great+Smoky+Mountains+Event+Park%2C+1130+Hyatt+Creek+Road%2C+Bryson+City%2C+NC" target="_blank">Fair map</a></div></div></article>
+<article class="card pivot"><div class="time">Evening swap<span class="label" data-editable="true">Culture + live event</span></div><div class="content"><h3 data-editable="true">Cherokee Bonfire or Unto These Hills</h3><p data-editable="true">Bonfire: free, 7-9 PM. Unto These Hills: final scheduled 2026 performance, 8-10 PM. Both require revised dog care and replace the normal dinner/evening.</p><div class="actions"><a class="btn alt" href="https://visitcherokeenc.com/play/outdoor-adventure/bonfire/" target="_blank">Bonfire details</a><a class="btn alt" href="https://www.google.com/maps/search/?api=1&query=Oconaluftee+Island+Park%2C+Cherokee%2C+NC" target="_blank">Bonfire map</a><a class="btn alt" href="https://visitcherokeenc.com/play/attractions/unto-these-hills-outdoor-drama/" target="_blank">Show details</a><a class="btn alt" href="https://www.google.com/maps/search/?api=1&query=Mountainside+Theatre%2C+Cherokee%2C+NC" target="_blank">Theatre map</a></div></div></article>
+<article class="card pivot"><div class="time">Weather pivot<span class="label" data-editable="true">Indoor/outdoor choices</span></div><div class="content"><h3 data-editable="true">If the trail or rail plan changes</h3><p data-editable="true">Heavy rain: skip Findley Falls and use the Heritage Museum, downtown shops and lunch. Rail cancellation: substitute Fontana Dam if visibility is good. Check NOC's summer music schedule for a simpler evening.</p><div class="actions"><a class="btn alt" href="https://www.explorebrysoncity.com/listing/swain-county-visitor-center-and-heritage-museum/785/" target="_blank">Museum</a><a class="btn alt" href="https://www.explorebrysoncity.com/things-to-do/scenic-drives/fontana-dam/" target="_blank">Fontana Dam</a><a class="btn alt" href="https://www.google.com/maps/search/?api=1&query=Fontana+Dam%2C+NC" target="_blank">Dam map</a><a class="btn alt" href="https://noc.com/events/2026-summer-music-series/" target="_blank">Live music schedule</a></div></div></article>
+</div></section>
+
+<section class="day" id="sun"><div class="dayhead"><div><div class="eyebrow">Sunday · August 23</div><h2 data-editable="true">Separate departures</h2></div><div class="theme">Memphis has the longer road home</div></div><div class="timeline">
+<article class="card"><div class="time">Morning<span class="label" data-editable="true">Cabin</span></div><div class="content"><h3 data-editable="true">Coffee, leftovers and final dog walk</h3><p data-editable="true">Use the remaining groceries. Avoid creating another scheduled meal unless everyone actively wants one.</p><div class="actions"><a class="btn alt" href="https://www.explorebrysoncity.com/restaurants-and-breweries/breakfast-and-brunch/" target="_blank">Optional breakfast directory</a></div></div></article>
+<article class="card"><div class="time">Jared & Kelly<span class="label" data-editable="true">Earlier departure</span></div><div class="content"><h3 data-editable="true">Leave first for the ~7½-hour drive</h3><p data-editable="true">Pack sandwiches, drinks and snacks so the longer return trip does not begin with another stop.</p><div class="actions"><a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=3000+Brush+Creek+Rd%2C+Bryson+City%2C+NC+28713&destination=Memphis%2C+TN&travelmode=driving" target="_blank">VRBO → Memphis route</a></div></div></article>
+<article class="card"><div class="time">Wade & Stephanie<span class="label" data-editable="true">Later departure</span></div><div class="content"><h3 data-editable="true">Complete final cabin check and head home</h3><p data-editable="true">The shorter drive gives Wade & Stephanie more flexibility for final checkout tasks.</p><div class="actions"><a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=3000+Brush+Creek+Rd%2C+Bryson+City%2C+NC+28713&destination=Charlotte%2C+NC&travelmode=driving" target="_blank">VRBO → Charlotte route</a></div></div></article>
+<article class="card pivot"><div class="time">Optional only<span class="label" data-editable="true">If packed early</span></div><div class="content"><h3 data-editable="true">Short breakfast or downtown stop</h3><p data-editable="true">Only add this if it does not delay Jared & Kelly. Do not move the waterfall hike to departure morning.</p></div></article>
+</div></section>
+
+<section class="quick-section" id="packing">
+  <div class="eyebrow">Offline-ready checklists</div>
+  <h2 data-editable="true">Packing & cabin preparation</h2>
+  <div class="check-grid">
+    <div class="check-card"><h3>Rafting</h3>
+      <label><input type="checkbox" data-check="water-shoes">Water shoes</label><label><input type="checkbox" data-check="synthetic-clothes">Synthetic clothes</label><label><input type="checkbox" data-check="towels">Towels</label><label><input type="checkbox" data-check="dry-clothes">Dry change of clothes</label><label><input type="checkbox" data-check="waterproof-bag">Waterproof bag</label>
+    </div>
+    <div class="check-card"><h3>Findley Falls & Rail Bikes</h3>
+      <label><input type="checkbox" data-check="trail-shoes">Trail shoes</label><label><input type="checkbox" data-check="bug-spray">Bug spray</label><label><input type="checkbox" data-check="sunscreen">Sunscreen</label><label><input type="checkbox" data-check="water-bottles">Water bottles</label><label><input type="checkbox" data-check="light-rain-layer">Light rain layer</label>
+    </div>
+    <div class="check-card"><h3>Remi & Cha Cha</h3>
+      <label><input type="checkbox" data-check="dog-food">Food and bowls</label><label><input type="checkbox" data-check="dog-meds">Medicines and supplements</label><label><input type="checkbox" data-check="leashes">Leashes and waste bags</label><label><input type="checkbox" data-check="dog-towels">Dog towels</label><label><input type="checkbox" data-check="settling-treats">Settling treats</label>
+    </div>
+    <div class="check-card"><h3>Cabin & Food</h3>
+      <label><input type="checkbox" data-check="thursday-dinner">Thursday dinner</label><label><input type="checkbox" data-check="breakfast">Breakfast basics</label><label><input type="checkbox" data-check="sandwiches">Sandwich supplies</label><label><input type="checkbox" data-check="drinks-ice">Drinks and ice</label><label><input type="checkbox" data-check="bakery-dessert">Kandi's dessert</label>
+    </div>
+  </div>
+</section>
+<section class="quick-section notes-screen-only">
+  <div class="eyebrow">Personal notes</div><h2>Weekend notes</h2>
+  <textarea id="mainNotes" class="notes-area" placeholder="Add reservation numbers, grocery requests, addresses or last-minute changes..."></textarea>
+</section>
+
+</main>
+<footer class="footer">Offline concierge edition. Verify live traffic before departure. Kandi's Cakes & Bake Shop: 200 S. Main Street, Waynesville; Thursday hours listed as 7 AM-5 PM. Swain County Agricultural Fair: August 21-22, 2026. Farmers & Artisans Market: Fridays, 9 AM-2 PM, pet-friendly and rain or shine. NOC Thursday Music Bingo: 6 PM through August 27, 2026.</footer>
+</div>
+
+
+
+<script>
+(function(){
+  const body=document.body;
+  const side=document.getElementById('sidePanel');
+  const editBtn=document.getElementById('editToggle');
+  const optionalBtn=document.getElementById('optionalToggle');
+  const weatherBtn=document.getElementById('weatherToggle');
+  const panelOptional=document.getElementById('panelOptional');
+  const panelWeather=document.getElementById('panelWeather');
+
+  function editableEls(){return Array.from(document.querySelectorAll('[data-editable="true"]'))}
+  function setEdit(on){
+    body.classList.toggle('editing',on);
+    editableEls().forEach(el=>{el.contentEditable=on?'true':'false';el.spellcheck=on});
+    editBtn.textContent=on?'Done':'Edit';
+    if(!on) saveContent();
+  }
+  function saveContent(){try{localStorage.setItem('brysonLuxuryGuideContent',document.querySelector('.shell').innerHTML)}catch(e){}}
+  function setOptional(show){
+    body.classList.toggle('hide-optional',!show);
+    optionalBtn.textContent=show?'Hide Options':'Show Options';
+    panelOptional.checked=show;
+    try{localStorage.setItem('brysonShowOptional',show?'1':'0')}catch(e){}
+  }
+  function setWeather(on){
+    body.classList.toggle('weather-only',on);
+    weatherBtn.textContent=on?'Normal View':'Weather View';
+    panelWeather.checked=on;
+  }
+
+  try{
+    const saved=localStorage.getItem('brysonLuxuryGuideContent');
+    if(saved) document.querySelector('.shell').innerHTML=saved;
+  }catch(e){}
+
+  document.getElementById('panelOpen').addEventListener('click',()=>side.classList.add('open'));
+  document.getElementById('panelClose').addEventListener('click',()=>side.classList.remove('open'));
+  document.querySelectorAll('.panel-nav a').forEach(a=>a.addEventListener('click',()=>side.classList.remove('open')));
+  editBtn.addEventListener('click',()=>setEdit(!body.classList.contains('editing')));
+  optionalBtn.addEventListener('click',()=>setOptional(body.classList.contains('hide-optional')));
+  weatherBtn.addEventListener('click',()=>setWeather(!body.classList.contains('weather-only')));
+  panelOptional.addEventListener('change',e=>setOptional(e.target.checked));
+  panelWeather.addEventListener('change',e=>setWeather(e.target.checked));
+
+  const notes=[document.getElementById('tripNotes'),document.getElementById('mainNotes')].filter(Boolean);
+  notes.forEach(area=>{
+    try{area.value=localStorage.getItem('brysonNotes')||''}catch(e){}
+    area.addEventListener('input',e=>{
+      notes.forEach(other=>{if(other!==e.target)other.value=e.target.value});
+      try{localStorage.setItem('brysonNotes',e.target.value)}catch(err){}
+    });
+  });
+  document.querySelectorAll('[data-check]').forEach(box=>{
+    const key='brysonCheck_'+box.dataset.check;
+    try{box.checked=localStorage.getItem(key)==='1'}catch(e){}
+    box.addEventListener('change',()=>{try{localStorage.setItem(key,box.checked?'1':'0')}catch(e){}});
+  });
+
+  try{setOptional(localStorage.getItem('brysonShowOptional')!=='0')}catch(e){setOptional(true)}
+
+  document.getElementById('saveCopy').addEventListener('click',()=>{
+    setEdit(false);
+    const clone=document.documentElement.cloneNode(true);
+    clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
+    clone.querySelector('body').classList.remove('editing','weather-only','hide-optional');
+    const blob=new Blob(['<!doctype html>\n'+clone.outerHTML],{type:'text/html'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;a.download='Bryson_City_Concierge_Guide_Edited.html';
+    document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+  });
+})();
+</script>
+
+</body></html>
